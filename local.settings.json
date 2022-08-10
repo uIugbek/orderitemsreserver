@@ -1,9 +1,9 @@
 {
   "IsEncrypted": false,
   "Values": {
-    "AzureWebJobsStorage": "",
-    "ServiceBusConnection": "",
-    "ContainerName": "",
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=cloudxeshopstorage;AccountKey=qkkMPE91j3FpDAqT1JhXnAAzheg81RdjLB5UJmHtjBBtTreri+c+pRwKRI/QnSz5hBTPJcJIdZb7+ASt+VGdZQ==;EndpointSuffix=core.windows.net",
+    "ServiceBusConnection": "Endpoint=sb://cloudx-service-bus.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=vBISOdaJPvwtZ9VhKHE7CUeqShFDnio4DFEgaUA0x9s=",
+    "ContainerName": "order-items",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet"
   }
 }
