@@ -1,10 +1,12 @@
 using System;
 using System.IO;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Azure.Storage.Blobs;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace OrderItemsReserver
 {
@@ -30,7 +32,17 @@ namespace OrderItemsReserver
             catch (Exception e)
             {
                 Console.WriteLine(e);
+                var httpClient = new HttpClient();
+                string logicAppUri = Environment.GetEnvironmentVariable("LogicAppUri");
+                var errorMessage = new ErrorMessage { Message = e.Message };
+                await httpClient.PostAsync(logicAppUri, new StringContent(JsonConvert.SerializeObject(errorMessage), Encoding.UTF8, "application/json"));
             }
         }
+    }
+
+    public class ErrorMessage
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
     }
 }
